@@ -1,5 +1,7 @@
 import React from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+
+//import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, HashRouter as Router } from "react-router-dom";
 import Home from "./core/Home";
 import signup from "./user/Signup";
 import signin from "./user/Signin";
@@ -19,7 +21,8 @@ import Cart from "./core/Cart";
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <Router>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/signin" exact component={signin} />
@@ -45,7 +48,8 @@ const Routes = () => {
         />
         <Route path="/cart" exact component={Cart} />
       </Switch>
-    </BrowserRouter>
+    </Router>
+    // </BrowserRouter>
   );
 };
 

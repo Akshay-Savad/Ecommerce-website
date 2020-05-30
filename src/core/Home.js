@@ -10,8 +10,8 @@ export default function Home() {
 
   const getAllProducts = () => {
     getProducts().then((data) => {
-      console.log("ERROE ", error);
-      if (data.error) {
+      console.log("ERROE ", data);
+      if (data && data.error) {
         setError(data.error);
       } else {
         setProducts(data);
@@ -35,6 +35,7 @@ export default function Home() {
             );
           })}
         </div>
+        <h3>HERE GOING INPUT BUUTON</h3>
       </div>
     </Base>
   );
