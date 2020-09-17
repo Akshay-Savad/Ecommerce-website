@@ -10,6 +10,7 @@ const Card = ({
   removeFromCart = false,
   setReload = (f) => f, // functions(f){return f}
   reload = undefined,
+  className = "card text-white bg-dark border border-info",
 }) => {
   const [redirect, setRedirect] = useState(false);
 
@@ -62,7 +63,7 @@ const Card = ({
   };
 
   return (
-    <div className="card text-white bg-dark border border-info ">
+    <div className={className} style={{ width: "18rem", margin: "0.2rem" }}>
       {getARedirect(redirect)}
       <div className="card-header lead">{cardTitle}</div>
       <div className="card-body">

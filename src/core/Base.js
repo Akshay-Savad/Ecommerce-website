@@ -1,34 +1,35 @@
-import React from "react";
-import "../styles.css";
-import Navbar from "./Navbar";
+import React from 'react';
+import '../styles.css';
+import Navbar from './Navbar';
+import Footer from './footer';
 
 const Base = ({
-  Title = "HOME PAGE",
-  Description = "BETTER MARKET PLACE!!",
-  className = "container-fluid text-dark text-center",
-  childrenProp = "container",
+  Title = 'HOME PAGE',
+  Description = 'BETTER MARKET PLACE!!',
+  className = 'container-fluid text-dark text-center',
+  titleClass = 'display-2',
+  childrenProp = 'container',
   children,
 }) => (
   <React.Fragment>
     <div className="wrapper">
       <Navbar />
       <div className={className}>
-        <div className="display-2">{Title}</div>
+        <div className={titleClass}>{Title}</div>
         <h2 className="lead">{Description}</h2>
       </div>
 
       <div className={childrenProp}>{children}</div>
     </div>
-    <div>
-      <footer className="row container-fluid fixed-bottom mx-auto text-white text-center bg-dark footer py-1">
-        <div className="col-sm">ABOUT</div>
-        <div className="col-sm">HELP</div>
-        <div className="col-sm">POLICY</div>
-        <div className="col-sm">SOCIAL</div>
-        <div className="col-sm">MAIL</div>
-        <div className="col-sm">OFFICAL ADDRESS</div>
-      </footer>
-    </div>
+    <Footer />
+    {/* <footer className="row container-fluid mx-auto text-white text-center bg-dark footer">
+      <div className="col-sm">ABOUT</div>
+      <div className="col-sm">HELP</div>
+      <div className="col-sm">POLICY</div>
+      <div className="col-sm">SOCIAL</div>
+      <div className="col-sm">MAIL</div>
+      <div className="col-sm">OFFICAL ADDRESS</div>
+    </footer> */}
   </React.Fragment>
 );
 

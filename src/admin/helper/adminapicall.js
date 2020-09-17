@@ -96,10 +96,11 @@ export const createProduct = (userId, token, product) => {
     body: product,
   })
     .then((res) => {
+      console.log("RESPONSE FOR CRATING PRODUCT", res);
       return res.json();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 };
 

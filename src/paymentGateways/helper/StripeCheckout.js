@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { isAuthenticate } from "../../auth/helper";
-import { emptyCart, loadAllProductsInCart } from "../../core/helper/carthelper";
-import { createOrder } from "../../core/helper/orderHelper";
-import { Link } from "react-router-dom";
-import ReactStripeCheckout from "react-stripe-checkout";
-import { API } from "../../backend";
+import React, { useState, useEffect } from 'react';
+import { isAuthenticate } from '../../auth/helper';
+import { emptyCart, loadAllProductsInCart } from '../../core/helper/carthelper';
+import { createOrder } from '../../core/helper/orderHelper';
+import { Link } from 'react-router-dom';
+import ReactStripeCheckout from 'react-stripe-checkout';
+import { API } from '../../backend';
 
 const StripeCheckout = ({
   product,
@@ -14,8 +14,8 @@ const StripeCheckout = ({
   const [data, setData] = useState({
     loading: false,
     success: false,
-    error: "",
-    address: "",
+    error: '',
+    address: '',
   });
 
   const makePayment = (token) => {
@@ -25,20 +25,20 @@ const StripeCheckout = ({
     };
 
     const headers = {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     };
 
     return fetch(`${API}/payment`, {
-      method: "POST",
+      method: 'POST',
       headers,
       body: JSON.stringify(body),
     })
       .then((response) => {
         setData({ ...data, loading: false, success: true });
         const { status } = response;
-        console.log("PAYMENT SUCCESSFUL STATUS ", status);
+        console.log('PAYMENT SUCCESSFUL STATUS ', status);
         emptyCart(() => {
-          console.log("CARSH");
+          console.log('CARSH');
         });
         const orderData = {
           product: product,
@@ -47,7 +47,7 @@ const StripeCheckout = ({
         setReload(!reload);
       })
       .catch((error) => {
-        console.log("ERROR ", error);
+        console.log('ERROR ', error);
       });
   };
 
@@ -73,7 +73,9 @@ const StripeCheckout = ({
           shippingAddress
           billingAddress
         >
-          <button className="btn btn-primary rounded">PAY WITH STRIPE</button>
+          <button className="btn btn-light rounded my-2 text-dark font-weight-bolder">
+            PAY WITH STRIPE
+          </button>
         </ReactStripeCheckout>
       </div>
     ) : (
@@ -84,10 +86,16 @@ const StripeCheckout = ({
   };
 
   return (
-    <div>
-      <h2>Checkout Loaded</h2>
-      <h2>{getFinalPriceValue()}</h2>
-      {showStripeButton()}
+    <div className="card text-white bg-dark border border-info my-2">
+      <div className="card-header border-light">
+        <h2>Checkout Loaded</h2>
+      </div>
+      <div className="card-body">
+        <h2 className="card-title">
+          Your Final Value : {getFinalPriceValue()}
+        </h2>
+        {showStripeButton()}
+      </div>
     </div>
   );
 };

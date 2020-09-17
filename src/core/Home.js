@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../styles.css";
-import Base from "./Base";
-import Card from "./Card";
-import { getProducts } from "./helper/coreapicalls";
+import React, { useState, useEffect } from 'react';
+import '../styles.css';
+import Base from './Base';
+import Card from './Card';
+import { getProducts } from './helper/coreapicalls';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -10,7 +10,7 @@ export default function Home() {
 
   const getAllProducts = () => {
     getProducts().then((data) => {
-      console.log("ERROE ", data);
+      console.log('ERROE ', data);
       if (data && data.error) {
         setError(data.error);
       } else {
@@ -24,19 +24,21 @@ export default function Home() {
   }, []);
 
   return (
-    <Base childrenProp="container-fluid">
-      <div>
-        <div className="row text-center text-capitalize">
-          {products.map((value, index) => {
-            return (
-              <div key={index} className="col-3">
-                <Card product={value} />
-              </div>
-            );
-          })}
-        </div>
-        <h3>HERE GOING INPUT BUUTON</h3>
-      </div>
+    <Base childrenProp="container-fluid mx-auto row text-center text-capitalize">
+      {products.map((value, index) => {
+        return (
+          <div
+            key={index}
+            className="col-12 col-sm-3"
+            style={{ width: '18rem' }}
+          >
+            <Card
+              product={value}
+              className="card text-white bg-dark border border-info mx-auto"
+            />
+          </div>
+        );
+      })}
     </Base>
   );
 }

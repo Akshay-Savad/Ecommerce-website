@@ -4,21 +4,23 @@
   border-radius: 0px;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: #ccccff;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
-  min-height: 100%;
-  margin-bottom: 50px;
+  flex: 1 0 auto;
 }
 
-/* footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-} */
-
-.bdr {
-  border: 1px solid green;
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

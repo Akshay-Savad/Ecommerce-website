@@ -1,7 +1,7 @@
-import React from "react";
-import Base from "../core/Base";
-import { isAuthenticate } from "../auth/helper/index";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Base from '../core/Base';
+import { isAuthenticate } from '../auth/helper/index';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const {
@@ -68,11 +68,11 @@ const AdminDashboard = () => {
     <Base
       Title="WELCOME TO ADMIN AREA"
       Description="MANAGE ALL OF YOUR PRODUCTS HERE"
+      childrenProp="container mx-auto row"
+      titleClass="display-3"
     >
-      <div className="row container">
-        <div className="col-3"> {leftSide()}</div>
-        <div className="col-9"> {rightSide()}</div>
-      </div>
+      <div className="col-12 col-md-3"> {leftSide()}</div>
+      <div className="col-12 col-md-9"> {rightSide()}</div>
     </Base>
   );
 };

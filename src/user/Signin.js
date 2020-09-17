@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import Base from "../core/Base";
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import Base from '../core/Base';
 
-import { signin, authenticate, isAuthenticate } from "../auth/helper";
+import { signin, authenticate, isAuthenticate } from '../auth/helper';
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "akshay@gmail.com",
-    password: "12345",
-    error: "",
+    email: '',
+    password: '',
+    error: '',
     loading: false,
     didRedirect: false,
   });
@@ -37,12 +37,12 @@ const Signin = () => {
           });
         }
       })
-      .catch(console.log("Signin request failed"));
+      .catch(console.log('Signin request failed'));
   };
 
   const performRedirect = () => {
     if (didRedirect) {
-      console.log("User JSON", user, "Token Value", token);
+      console.log('User JSON', user, 'Token Value', token);
       if (user && user.role === 1) {
         return <Redirect to="/admin/dashboard" />;
       } else {
@@ -70,7 +70,7 @@ const Signin = () => {
     return (
       <div
         className="alert alert-danger"
-        style={{ display: error ? "" : "none" }}
+        style={{ display: error ? '' : 'none' }}
       >
         {error}
       </div>
@@ -87,7 +87,7 @@ const Signin = () => {
             <div className="form-group">
               <label className="text-dark"> Email</label>
               <input
-                onChange={handleChange("email")}
+                onChange={handleChange('email')}
                 value={email}
                 className="form-control"
                 type="text"
@@ -96,13 +96,16 @@ const Signin = () => {
             <div className="form-group">
               <label className="text-dark"> password</label>
               <input
-                onChange={handleChange("password")}
+                onChange={handleChange('password')}
                 value={password}
                 className="form-control"
                 type="password"
               />
             </div>
-            <button onClick={onSubmit} className="btm btn-success btn-block">
+            <button
+              onClick={onSubmit}
+              className="btm btn-success btn-block mb-2"
+            >
               Submit
             </button>
           </form>
@@ -116,7 +119,6 @@ const Signin = () => {
       {/* loadingMessage and errorMessage componet is in signInForm  */}
       {signInForm()}
       {performRedirect()}
-      <p className="text-dark text-center">{JSON.stringify(values)}</p>
     </Base>
   );
 };
