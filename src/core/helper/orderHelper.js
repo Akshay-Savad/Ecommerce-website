@@ -1,18 +1,23 @@
-import { API } from "../../backend";
+import { API } from '../../backend';
 
-export const createOrder = (userId, token, orderData) => {
+export const createOrder = (
+  userId,
+  token,
+  orderedProductArray,
+  stripeToken
+) => {
   return fetch(`${API}/order/create/${userId}`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ order: orderData }),
+    body: JSON.stringify({ order: orderedProductArray, token: stripeToken }),
   })
     .then((response) => {
-      console.log("RESPONSE ", response);
+      console.log('RESPONSE ', response);
       return response.json();
     })
-    .catch((err) => console.log("ERROR IN ORDER HELPER", err));
+    .catch((err) => console.log('ERROR IN ORDER HELPER', err));
 };

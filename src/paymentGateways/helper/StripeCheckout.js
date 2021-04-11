@@ -34,16 +34,29 @@ const StripeCheckout = ({
       body: JSON.stringify(body),
     })
       .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
         setData({ ...data, loading: false, success: true });
-        const { status } = response;
-        console.log('PAYMENT SUCCESSFUL STATUS ', status);
         emptyCart(() => {
-          console.log('CARSH');
+          console.log('CART EMPTY');
         });
-        const orderData = {
-          product: product,
-        };
-        createOrder(userId, tokenForAuth, orderData);
+
+        var orderedProductArray = [];
+        var orderData;
+        product.map((product) => {
+          orderData = {
+            product: product._id,
+            name: product.name,
+            count: 1,
+            price: product.price,
+          };
+
+          orderedProductArray.push(orderData);
+        });
+
+        var stripeToken = data.body;
+        createOrder(userId, tokenForAuth, orderedProductArray, stripeToken);
         setReload(!reload);
       })
       .catch((error) => {
