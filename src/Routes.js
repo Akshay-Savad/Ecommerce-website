@@ -27,8 +27,8 @@ import Cart from './core/Cart';
 
 const Routes = () => {
   return (
-    <BrowserRouter>
-      {/* <Router> */}
+    // <BrowserRouter>
+    <Router>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/signin" exact component={signin} />
@@ -55,8 +55,8 @@ const Routes = () => {
         />
         <Route path="/cart" exact component={Cart} />
       </Switch>
-      {/* </Router> */}
-    </BrowserRouter>
+    </Router>
+    // {/* </BrowserRouter> */}
   );
 };
 
