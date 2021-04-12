@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import Base from "../core/Base";
+import Base from '../core/Base';
 
-import { isAuthenticate } from "../auth/helper";
-import { getAllProduct, deleteProduct } from "./helper/adminapicall";
+import { isAuthenticate } from '../auth/helper';
+import { getAllProduct, deleteProduct } from './helper/adminapicall';
 
 const ManageProduct = () => {
   const [product, setProduct] = useState([]);
@@ -36,15 +36,17 @@ const ManageProduct = () => {
   };
 
   return (
-    <Base title="Welcome admin" description="Manage products here">
-      <h2 className="mb-4">All products:</h2>
+    <Base Title="Welcome Admin" Description="Manage products here">
       <Link className="btn btn-info" to={`/admin/dashboard`}>
         <span className="">Admin Home</span>
       </Link>
       <div className="row">
         <div className="col-12">
-          <h2 className="text-center text-dark my-3">Total 3 products</h2>
-          <p className="text-center text-dark">req.qurey not working</p>
+          {console.log(product.length)}
+          <h5 className="text-right text-dark my-3">
+            Total Products :
+            <span className="text-monospace"> {product.length} </span>
+          </h5>
 
           {product.map((value, index) => {
             return (

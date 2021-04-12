@@ -27,7 +27,7 @@ const UserDashboard = () => {
     return (
       <React.Fragment>
         <h5 style={{ display: 'inline' }}>
-          <span className="badge badge-primary">Name</span>
+          <span className="badge badge-primary">Name</span>{' '}
           {isAuthenticate().user.name}
         </h5>
         <h5 className="ml-2" style={{ display: 'inline' }}>
@@ -40,7 +40,7 @@ const UserDashboard = () => {
 
   const showUserOrders = () => {
     if (!Boolean(Number(Array.isArray(orders) && orders.length))) {
-      return <h2>Cart is Empty</h2>;
+      return <h2>No Orders Placed</h2>;
     } else {
       return (
         <React.Fragment>

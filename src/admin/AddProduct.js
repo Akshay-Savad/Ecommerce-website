@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import Base from "../core/Base";
-import { Link, Redirect } from "react-router-dom";
-import { getAllCategory, createProduct } from "./helper/adminapicall";
-import { isAuthenticate } from "../auth/helper/index";
+import React, { useState, useEffect } from 'react';
+import Base from '../core/Base';
+import { Link, Redirect } from 'react-router-dom';
+import { getAllCategory, createProduct } from './helper/adminapicall';
+import { isAuthenticate } from '../auth/helper/index';
 
 const AddProduct = () => {
   const { user, token } = isAuthenticate();
 
   const [values, setValues] = useState({
-    name: "",
-    description: "",
-    price: "",
-    stock: "",
-    photo: "",
+    name: '',
+    description: '',
+    price: '',
+    stock: '',
+    photo: '',
     categories: [],
-    category: "",
+    category: '',
     loading: false,
-    error: "",
-    createdProduct: "",
+    error: '',
+    createdProduct: '',
     getaRedirect: false,
-    formData: "",
+    formData: '',
   });
 
   const {
@@ -53,18 +53,18 @@ const AddProduct = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: "", loading: true });
+    setValues({ ...values, error: '', loading: true });
     createProduct(user._id, token, formData).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
           ...values,
-          name: "",
-          description: "",
-          price: "",
-          photo: "",
-          stock: "",
+          name: '',
+          description: '',
+          price: '',
+          photo: '',
+          stock: '',
           loading: false,
           getaRedirect: true,
           createdProduct: data.name,
@@ -74,13 +74,13 @@ const AddProduct = () => {
   };
 
   const handleChange = (name) => (event) => {
-    const value = name === "photo" ? event.target.files[0] : event.target.value;
+    const value = name === 'photo' ? event.target.files[0] : event.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value });
   };
 
   const successMessage = () => {
-    //FIXME:
+    // FIXME:
     // if (getaRedirect) {
     //   setTimeout(() => (
     //       console.log("WE ARE READY TO REDIRECT"),
@@ -91,7 +91,7 @@ const AddProduct = () => {
     return (
       <div
         className="alert alert-success mt-3"
-        style={{ display: createdProduct ? "" : "none" }}
+        style={{ display: createdProduct ? '' : 'none' }}
       >
         <h4>{createdProduct} created successfully</h4>
       </div>
@@ -101,9 +101,10 @@ const AddProduct = () => {
   const errorMessage = () => (
     <div
       className="alert alert-success mt-3"
-      style={{ display: error ? "" : "none" }}
+      style={{ display: error ? '' : 'none' }}
     >
-      <h4>{error} is there</h4>
+      {console.log(error)}
+      <h4>Error Occur!! Please Contact your developer</h4>
     </div>
   );
 
@@ -114,7 +115,7 @@ const AddProduct = () => {
       <div className="form-group">
         <label className="btn btn-block btn-success">
           <input
-            onChange={handleChange("photo")}
+            onChange={handleChange('photo')}
             type="file"
             name="photo"
             accept="image"
@@ -124,7 +125,7 @@ const AddProduct = () => {
       </div>
       <div className="form-group">
         <input
-          onChange={handleChange("name")}
+          onChange={handleChange('name')}
           name="photo"
           className="form-control"
           placeholder="Name"
@@ -133,7 +134,7 @@ const AddProduct = () => {
       </div>
       <div className="form-group">
         <textarea
-          onChange={handleChange("description")}
+          onChange={handleChange('description')}
           name="photo"
           className="form-control"
           placeholder="Description"
@@ -142,7 +143,7 @@ const AddProduct = () => {
       </div>
       <div className="form-group">
         <input
-          onChange={handleChange("price")}
+          onChange={handleChange('price')}
           type="number"
           className="form-control"
           placeholder="Price"
@@ -151,7 +152,7 @@ const AddProduct = () => {
       </div>
       <div className="form-group">
         <select
-          onChange={handleChange("category")}
+          onChange={handleChange('category')}
           className="form-control"
           placeholder="Category"
         >
@@ -166,7 +167,7 @@ const AddProduct = () => {
       </div>
       <div className="form-group">
         <input
-          onChange={handleChange("stock")}
+          onChange={handleChange('stock')}
           type="number"
           className="form-control"
           placeholder="Stock"

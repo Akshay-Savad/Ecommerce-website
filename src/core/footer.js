@@ -26,7 +26,7 @@ function Footer() {
       <div style={phantom} />
       <div style={style}>
         <div className="container text-center">
-          <small>Copyright Your Website</small>
+          <small>Copyright &#169; 2021</small>
         </div>
       </div>
     </div>
